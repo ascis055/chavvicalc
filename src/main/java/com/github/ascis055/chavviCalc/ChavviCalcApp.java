@@ -57,25 +57,51 @@ public class ChavviCalcApp {
     printMenuLine();
   }
 
-  // get first character from input
+  // get first character from input line
+  // return value:
+  //     Character received: character value
+  //     Empty line: '_'
+  //     Exception (end-of-input or error): 'q'
   private static Character menuGetCommand(Scanner scan) {
-    Character command = '_';
+    String rawInput;
 
-    String rawInput = scan.nextLine();
-
+    try {
+        rawInput = scan.nextLine();
+    }
+    catch (Exception e) {
+        System.out.println();
+        return 'q';
+    }
     if (rawInput.length() > 0) {
       rawInput = rawInput.toLowerCase();
-      command = rawInput.charAt(0);
-    }
-
-    return command;
+      return rawInput.charAt(0);
+    } else
+        return '_';
   }
+
   // get floating point number from input line
+  // return value:
+  //     Value entered: numeric value
+  //     Invalid input: Float.NaN
+  // This function ignores end-of-input or error conditions if they
+  // happen after a valid input. Next input attempt should process
+  // those.
   private static float GetFloat(Scanner scan) {
       float value;
 
-      value = scan.nextFloat();
-      scan.nextLine();
+      try {
+          value = scan.nextFloat();
+      }
+      catch (Exception e) {
+          System.out.println("ERROR: Invalid numeric value");
+          value = Float.NaN;
+      }
+      try {
+          scan.nextLine();
+      }
+      catch (Exception e) {
+          System.out.println();
+      }
       return value;
   }
 
@@ -91,12 +117,20 @@ public class ChavviCalcApp {
 
       case 'a':
         System.out.print("Enter A: ");
-        a = GetFloat(scan);
+        v = GetFloat(scan);
+        if (!Float.isNaN(v)) {
+            a = v;
+        } else
+            success = false;
         break;
 
       case 'b':
         System.out.print("Enter B: ");
-        b = GetFloat(scan);
+        v = GetFloat(scan);
+        if (!Float.isNaN(v)) {
+            b = v;
+        } else
+            success = false;
         break;
 
       case 'c':
