@@ -104,15 +104,19 @@ public class ChavviCalcApp {
         break;
 
       case '+':
+        a = a + b;
         break;
 
       case '-':
+        a = a - b;
         break;
 
       case '*':
+        a = a * b;
         break;
 
       case '/':
+        a = a / b;
         break;
 
       default:
