@@ -7,6 +7,7 @@ import java.util.*;
  */
 public class ChavviCalcApp {
 
+  static float a = 0, b = 0;
   public static void main(String[] args) {
     Scanner scan = new Scanner(System.in);
     Character command = '_';
@@ -41,6 +42,8 @@ public class ChavviCalcApp {
     printMenuLine();
     System.out.println("ChavviCalc");
     printMenuLine();
+    System.out.printf("A = %.3f\tB = %.3f\n", a, b);
+    printMenuLine();
 
     printMenuCommand('a', "Enter a value for A");
     printMenuCommand('b', "Enter a value for B");
@@ -67,6 +70,14 @@ public class ChavviCalcApp {
 
     return command;
   }
+  // get floating point number from input line
+  private static float GetFloat(Scanner scan) {
+      float value;
+
+      value = scan.nextFloat();
+      scan.nextLine();
+      return value;
+  }
 
   // calculator functions
   private static Boolean executeCommand(Scanner scan, Character command) {
@@ -78,12 +89,18 @@ public class ChavviCalcApp {
         break;
 
       case 'a':
+        System.out.print("Enter A: ");
+        a = GetFloat(scan);
         break;
 
       case 'b':
+        System.out.print("Enter B: ");
+        b = GetFloat(scan);
         break;
 
       case 'c':
+        a = 0;
+        b = 0;
         break;
 
       case '+':
