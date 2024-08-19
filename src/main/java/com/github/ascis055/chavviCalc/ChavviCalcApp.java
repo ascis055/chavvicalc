@@ -42,6 +42,13 @@ public class ChavviCalcApp {
     System.out.println("ChavviCalc");
     printMenuLine();
 
+    printMenuCommand('a', "Enter a value for A");
+    printMenuCommand('b', "Enter a value for B");
+    printMenuCommand('+', "Add");
+    printMenuCommand('-', "Subtract");
+    printMenuCommand('*', "Multiply");
+    printMenuCommand('/', "Divide");
+    printMenuCommand('c', "Clear");
     printMenuCommand('q', "Quit");
 
     printMenuLine();
@@ -69,6 +76,28 @@ public class ChavviCalcApp {
       case 'q':
         System.out.println("Thank you for using Chavvi Calc");
         break;
+
+      case 'a':
+        break;
+
+      case 'b':
+        break;
+
+      case 'c':
+        break;
+
+      case '+':
+        break;
+
+      case '-':
+        break;
+
+      case '*':
+        break;
+
+      case '/':
+        break;
+
       default:
         System.out.println("ERROR: Unknown commmand");
         success = false;
