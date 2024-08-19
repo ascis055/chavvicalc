@@ -10,16 +10,16 @@ public class ChavviCalcApp {
   static float a = 0, b = 0;
   public static void main(String[] args) {
     Scanner scan = new Scanner(System.in);
-    Character command = '_';
+    Character command;
 
     // loop until user quits
-    while (command != 'q') {
+    do {
       printMenu();
       System.out.print("Enter a command: ");
       command = menuGetCommand(scan);
 
       executeCommand(scan, command);
-    }
+    } while (command != 'q');
 
     scan.close();
   }
