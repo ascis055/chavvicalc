@@ -82,6 +82,7 @@ public class ChavviCalcApp {
   // calculator functions
   private static Boolean executeCommand(Scanner scan, Character command) {
     Boolean success = true;
+    float v;
 
     switch (command) {
       case 'q':
@@ -116,7 +117,13 @@ public class ChavviCalcApp {
         break;
 
       case '/':
-        a = a / b;
+        v = a / b;
+        if (!Float.isNaN(v) && !Float.isInfinite(v)) {
+             a = v;
+        } else {
+             System.out.println("ERROR: invalid division");
+            success = false;
+        }
         break;
 
       default:
